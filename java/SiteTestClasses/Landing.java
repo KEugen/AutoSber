@@ -172,12 +172,12 @@ public class Landing extends SetDriver {
 
         methods.Wait(1000);
         heartsUrl = driver.findElement(ListOfHearths.get(HeartNumber)).getAttribute("xlink:href");
-        System.out.println(heartsUrl);
+        //System.out.println(heartsUrl);
         driver.findElement(ListOfHearths.get(HeartNumber)).click();
         methods.Wait(2000);
         actualHeartsUrl = driver.getCurrentUrl();
-        System.out.println(actualHeartsUrl);
-        System.out.println(actualHeartsUrl.contains(heartsUrl));
+        //System.out.println(actualHeartsUrl);
+        //System.out.println(actualHeartsUrl.contains(heartsUrl));
         driver.navigate().back();
 
         return (actualHeartsUrl.contains(heartsUrl));
