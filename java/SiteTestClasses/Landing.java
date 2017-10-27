@@ -19,7 +19,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class Landing extends SetDriver {
-
     private AdditionalMethods methods = new AdditionalMethods();
 
     private By landingSberbankButton = By.cssSelector(".b-landing-main__header-right > a:nth-child(1) > div");
@@ -45,48 +44,51 @@ public class Landing extends SetDriver {
     private By landingFbSharing = By.cssSelector(".g-share__share_fb");
     private By landingTwitterSharing = By.cssSelector(".g-share__share_tw");
 
-    private By landingSlidersCircle1 = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(1)");
-    private By landingSlidersCircle2 = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(2)");
-    private By landingSlidersCircle3 = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(3)");
+    private By firstLandingSlidersCircle = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(1)");
+    private By secondLandingSlidersCircle = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(2)");
+    private By thirdLandingSlidersCircle = By.cssSelector(".b-landing-how-works__steps-wrapper > div:nth-child(3)");
 
-    private By landingSlidersText1 = By.cssSelector(".b-landing-how-works__content > div:nth-child(1) > div");
-    private By landingSlidersText2 = By.cssSelector(".b-landing-how-works__content > div:nth-child(2) > div");
-    private By landingSlidersText3 = By.cssSelector(".b-landing-how-works__content > div:nth-child(3) > div");
+    private By firstLandingSlidersText = By.cssSelector(".b-landing-how-works__content > div:nth-child(1) > div");
+    private By secondLandingSlidersText = By.cssSelector(".b-landing-how-works__content > div:nth-child(2) > div");
+    private By thirdLandingSlidersText = By.cssSelector(".b-landing-how-works__content > div:nth-child(3) > div");
 
-    private By landingHeart1 = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(2) > svg > a");
-    private By landingHeart2 = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(3) > svg > a");
-    private By landingHeart3 = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(4) > svg > a");
-
-    private By landingHeart4 = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(4) > svg > a");
-    private By landingHeart5 = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(5) > svg > a");
-    private By landingHeart6 = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(6) > svg > a");
+    private By firstLandingHeart = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(2) > svg > a");
+    private By secondLandingHeart = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(3) > svg > a");
+    private By thirdLandingHeart = By.cssSelector(".b-landing-let-together__left-grid > div:nth-child(4) > svg > a");
+    private By fourthLandingHeart = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(4) > svg > a");
+    private By fifthLandingHeart = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(5) > svg > a");
+    private By sixthLandingHeart = By.cssSelector(".b-landing-let-together__right-grid > div:nth-child(6) > svg > a");
 
     private ArrayList<By> ListOfHearths = new ArrayList<>();
-    private ArrayList<By> Cirles = new ArrayList<>();
+    private ArrayList<By> Circles = new ArrayList<>();
     private ArrayList<By> Texts = new ArrayList<>();
 
+    // конструктор класса в котором инициализируем списки
     public Landing() {
+        Circles.add(firstLandingSlidersCircle);
+        Circles.add(secondLandingSlidersCircle);
+        Circles.add(thirdLandingSlidersCircle);
 
-        Cirles.add(landingSlidersCircle1);
-        Cirles.add(landingSlidersCircle2);
-        Cirles.add(landingSlidersCircle3);
+        Texts.add(firstLandingSlidersText);
+        Texts.add(secondLandingSlidersText);
+        Texts.add(thirdLandingSlidersText);
 
-        Texts.add(landingSlidersText1);
-        Texts.add(landingSlidersText2);
-        Texts.add(landingSlidersText3);
+        ListOfHearths.add(firstLandingHeart);
+        ListOfHearths.add(secondLandingHeart);
+        ListOfHearths.add(thirdLandingHeart);
+        ListOfHearths.add(fourthLandingHeart);
+        ListOfHearths.add(fifthLandingHeart);
+        ListOfHearths.add(sixthLandingHeart);
+    }
 
-        ListOfHearths.add(landingHeart1);
-        ListOfHearths.add(landingHeart2);
-        ListOfHearths.add(landingHeart3);
-        ListOfHearths.add(landingHeart4);
-        ListOfHearths.add(landingHeart5);
-        ListOfHearths.add(landingHeart6);
+    // возвращает ListOfHearths для использования его размера в LandingTest
+    public ArrayList<By> getListOfHearths() {
+        return ListOfHearths;
     }
 
 
     public void clickInLandingButtonsInNewTab(ArrayList<String> expectedResult){
         //methods = new AdditionalMethods();
-
         ArrayList buttonsInNewTab = new ArrayList();
         buttonsInNewTab.add(landingSberbankButton);
         buttonsInNewTab.add(landingMastercardButton);
@@ -112,7 +114,6 @@ public class Landing extends SetDriver {
 
     public void clickInLandingButtons(ArrayList<String> expectedResult){
         //methods = new AdditionalMethods();
-
         ArrayList buttons = new ArrayList();
         buttons.add(landingStartButton);
         buttons.add(landingAlreadyButton);
@@ -134,53 +135,29 @@ public class Landing extends SetDriver {
     }
 
     public String clickOnSlider(int currentNumber) {
-
-//        ArrayList<By> Cirles = new ArrayList<>();
-//        Cirles.add(landingSlidersCircle1);
-//        Cirles.add(landingSlidersCircle2);
-//        Cirles.add(landingSlidersCircle3);
-//
-//        ArrayList<By> Texts = new ArrayList<>();
-//        Texts.add(landingSlidersText1);
-//        Texts.add(landingSlidersText2);
-//        Texts.add(landingSlidersText3);
-
         methods.Wait(1000);
-        driver.findElement(Cirles.get(currentNumber)).click();
+        driver.findElement(Circles.get(currentNumber)).click();
         methods.Wait(750);
-
         return driver.findElement(Texts.get(currentNumber)).getText();
     }
 
     public Boolean waitAutoSwitching (int expectedSlide) {
-
-//        ArrayList<By> Texts = new ArrayList<>();
-//        Texts.add(landingSlidersText1);
-//        Texts.add(landingSlidersText2);
-//        Texts.add(landingSlidersText3);
-
         // ждем около 5 сек, пока слайд сам поменяется
         methods.Wait(5250);
-        //methods.Wait(750);
         return driver.findElement(Texts.get(expectedSlide)).isDisplayed();
     }
 
     public Boolean clickOnHearts(int HeartNumber) {
-
-        String heartsUrl;
+        String expectedHeartsUrl;
         String actualHeartsUrl;
 
         methods.Wait(1000);
-        heartsUrl = driver.findElement(ListOfHearths.get(HeartNumber)).getAttribute("xlink:href");
-        //System.out.println(heartsUrl);
+        expectedHeartsUrl = driver.findElement(ListOfHearths.get(HeartNumber)).getAttribute("xlink:href");
         driver.findElement(ListOfHearths.get(HeartNumber)).click();
-        methods.Wait(2000);
+        methods.Wait(1500);
         actualHeartsUrl = driver.getCurrentUrl();
-        //System.out.println(actualHeartsUrl);
-        //System.out.println(actualHeartsUrl.contains(heartsUrl));
         driver.navigate().back();
-
-        return (actualHeartsUrl.contains(heartsUrl));
+        return (actualHeartsUrl.contains(expectedHeartsUrl));
     }
 
 }

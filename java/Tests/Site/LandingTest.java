@@ -35,8 +35,7 @@ public class LandingTest extends SetDriver {
         expectedResultForOtherButtons.add("Сбербанк Вместе – простой способ помогать");
         expectedResultForOtherButtons.add("Сбербанк Вместе – простой способ помогать");
         expectedResultForOtherButtons.add("Сбербанк Вместе – простой способ помогать");
-
-        //landing.clickInLandingButtons(expectedResultForOtherButtons);
+        landing.clickInLandingButtons(expectedResultForOtherButtons);
 
         ArrayList<String> expectedResultForSberbankAndMastercard = new ArrayList();
         expectedResultForSberbankAndMastercard.add("«Сбербанк» - Частным клиентам");
@@ -47,10 +46,7 @@ public class LandingTest extends SetDriver {
         expectedResultForSberbankAndMastercard.add("Одноклассники");
         expectedResultForSberbankAndMastercard.add("Facebook");
         expectedResultForSberbankAndMastercard.add("Поделиться ссылкой в Твиттере");
-
-
-        //landing.clickInLandingButtonsInNewTab(expectedResultForSberbankAndMastercard);
-
+        landing.clickInLandingButtonsInNewTab(expectedResultForSberbankAndMastercard);
 
         // проверяем работу слайдера
         ArrayList<String> expectedTextsOnSlide = new ArrayList<>();
@@ -59,21 +55,18 @@ public class LandingTest extends SetDriver {
         expectedTextsOnSlide.add("Получайте ежемесячные отчеты");
 
         for (int i = expectedTextsOnSlide.size() - 1; i >= 0 ; i--) {
-
             String actualText = landing.clickOnSlider(i);
             Assert.assertEquals(expectedTextsOnSlide.get(i), actualText);
-
         }
 
-        // автопереключение
-        Assert.assertTrue("Не работает автопереключение слайдов",landing.waitAutoSwitching(1));
-        Assert.assertTrue("Не работает автопереключение слайдов",landing.waitAutoSwitching(2));
-        Assert.assertTrue("Не работает автопереключение слайдов",landing.waitAutoSwitching(0));
+        // автопереключение слайдов - после предыдущего метода показ остановился на 1 слайде => ожидаем увидеть последовательно: 2-й, 3-й, 1-й
+        Assert.assertTrue("Не работает автопереключение слайдов", landing.waitAutoSwitching(1));
+        Assert.assertTrue("Не работает автопереключение слайдов", landing.waitAutoSwitching(2));
+        Assert.assertTrue("Не работает автопереключение слайдов", landing.waitAutoSwitching(0));
 
-        // проверяем работу сердечек <3
-        for (int i = 0; i <= 5; i++) {
-            Assert.assertTrue(i + "-е сердечко не работает",landing.clickOnHearts(i));
+        // проверяем, что по клику на сердечке переходим на страницу соотвествующего фонда
+        for (int i = 0; i < landing.getListOfHearths().size(); i++) {
+            Assert.assertTrue(i + "-е сердечко не работает", landing.clickOnHearts(i));
         }
-        //Assert.assertTrue(landing.clickOnHearts());
     }
 }
