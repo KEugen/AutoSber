@@ -10,7 +10,7 @@ public class Settings {
 
     public WebDriver driver;
     public String setTypeStand(){
-        String stand = "demo"; //выбор стенда qa/demo
+        String stand = "qa"; //выбор стенда qa/demo
         return stand;
     }
 
